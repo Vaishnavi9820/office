@@ -1,33 +1,24 @@
 import os
 import sys
-import importlib.util
+from django.core.wsgi import get_wsgi_application
 
-# Get the project root directory
+# Add the project directory to the sys.path
 project_home = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(project_home)
 
-# Add project directory to Python path
-if project_home not in sys.path:
-    sys.path.insert(0, project_home)
+# Add the Django project directory to the sys.path
+django_project_dir = os.path.join(project_home, 'empmanagement')
+sys.path.append(django_project_dir)
 
-# Add empmanagement directory to Python path
-empmanagement_path = os.path.join(project_home, 'empmanagement')
-if empmanagement_path not in sys.path:
-    sys.path.insert(0, empmanagement_path)
+# Set the Django settings module
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'empmanagement.settings')
 
-# Print debugging information (helpful for debugging deployment issues)
-print(f"Python version: {sys.version}")
-print(f"Current directory: {os.getcwd()}")
-print(f"Project directory: {project_home}")
+# Print debugging information
+print(f"Project home: {project_home}")
+print(f"Django project directory: {django_project_dir}")
+print(f"Current directory contents: {os.listdir(project_home)}")
+print(f"Django project directory contents: {os.listdir(django_project_dir)}")
 print(f"Python path: {sys.path}")
-print(f"Directory contents: {os.listdir(project_home)}")
-print(f"Empmanagement directory contents: {os.listdir(empmanagement_path)}")
 
-# Define the WSGI application directly
-def create_wsgi_app():
-    """Create a WSGI application for Django"""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'empmanagement.settings')
-    from django.core.wsgi import get_wsgi_application
-    return get_wsgi_application()
-
-# This is what Gunicorn will use
-app = create_wsgi_app()
+# Create the WSGI application
+app = get_wsgi_application()
