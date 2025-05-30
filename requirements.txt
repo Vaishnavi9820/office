@@ -12,3 +12,4 @@ whitenoise==6.5.0
 requests==2.31.0
 Pillow==10.0.0
 django-heroku==0.3.1
+geocoder==1.38.1
