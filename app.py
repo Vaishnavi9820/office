@@ -26,24 +26,6 @@ if inner_emp_path not in sys.path:
 # Set Django settings
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'empmanagement.settings')
 
-# Initialize Django
-import django
-django.setup()
-
-# Run migrations
-try:
-    from django.core.management import execute_from_command_line
-    print("Running migrations...")
-    execute_from_command_line(['manage.py', 'migrate', '--noinput'])
-    print("Migrations complete")
-    
-    # Collect static files
-    print("Collecting static files...")
-    execute_from_command_line(['manage.py', 'collectstatic', '--noinput'])
-    print("Static files collected")
-except Exception as e:
-    print(f"Error during setup: {str(e)}")
-
 # Import Django WSGI application
 from django.core.wsgi import get_wsgi_application
 app = get_wsgi_application()
