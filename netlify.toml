@@ -1,0 +1,8 @@
+[build]
+  command = "pip install -r requirements.txt && cd empmanagement && python manage.py collectstatic --noinput"
+  publish = "empmanagement/staticfiles"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,0 +1,46 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Environment variables
+.env
+.env.*
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+.pipenv
+Pipfile.lock
+
+# Development/IDE specific
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Database
+*.sql
+*.sqlite3
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Problematic migration files
+empmanagement/employee/migrations/0002_alter_attendance_options_remove_attendance_status_and_more.py
